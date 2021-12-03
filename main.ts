@@ -1,3 +1,6 @@
+input.onButtonPressed(Button.A, function () {
+	
+})
 namespace rocketlauncher {
     /**
        * State of the rocket launcher
@@ -25,7 +28,7 @@ namespace rocketlauncher {
         }
         else if (rocketState == RocketLaunchState.Disarmed) {
             //write pin 0 to LOW
-            pins.digitalWritePin(DigitalPin.P0, 1)
+            pins.digitalWritePin(DigitalPin.P0, 0)
         }
 
     }
