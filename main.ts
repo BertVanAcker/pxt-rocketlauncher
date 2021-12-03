@@ -66,7 +66,8 @@ namespace rocketlauncher {
         /**
              * Rocket state
              */
-        //% blockId=rocket_state block="is armed?"
+        //% blockId=rocket_state block="%Rocket| is armed?"
+        //% parts="rocket"
         isArmed(): boolean{
             return(this.mode==RocketLaunchState.Armed)
 
