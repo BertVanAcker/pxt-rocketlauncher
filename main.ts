@@ -1,6 +1,3 @@
-/**
-       * State of the rocket launcher
-       */
 enum RocketLaunchState {
     //% block="Disarmed"
     Disarmed,
@@ -9,7 +6,6 @@ enum RocketLaunchState {
     //% block="Error"
     Error
 }
-
 namespace rocketlauncher {
     
 
@@ -23,7 +19,7 @@ namespace rocketlauncher {
         /**
          * initiate the launch sequence.
          */
-        //% blockId="initiate-launch" block="%Rocket.|launch" blockGap=8
+        //% blockId="initiate-launch" block="%Rocket| launch" blockGap=8
         //% rocket.defl=rocket
         //% weight=79
         //% parts="rocket"
@@ -75,7 +71,7 @@ namespace rocketlauncher {
          * @param launchpin the pin where the rocket launch mechanism is conneted to.
          * @param countdown
          */
-    //% blockId="rocket_create" block="Initialize rocket with name %_name|with launch delay %countdown|on launchpin %launchpin"
+    //% blockId="rocket_create" block="Initialize rocket with name %name|with launch delay %countdown|on launchpin %launchpin"
     //% weight=90 blockGap=8
     //% parts="rocket"
     //% trackArgs=0,2
@@ -92,5 +88,3 @@ namespace rocketlauncher {
 
     
 }
-
-
