@@ -28,10 +28,11 @@ namespace rocketlauncher {
                 //start countdown
                 basic.pause(this.countdown);
                 //write pin 1 to HIGH 
-                pins.digitalWritePin(DigitalPin.P1, 1)
+                pins.digitalWritePin(this.launchpin, 1)
+                
                 // cooldown and shutdown
                 basic.pause(500);
-                pins.digitalWritePin(DigitalPin.P1, 0)
+                pins.digitalWritePin(this.launchpin, 0)
             }
             else{
                 this.mode=RocketLaunchState.Error
@@ -70,15 +71,15 @@ namespace rocketlauncher {
          * Create a new rocket 
          * @param launchpin the pin where the rocket launch mechanism is conneted to.
          * @param countdown
+         * @param RocketLaunchState
          */
-    //% blockId="rocket_create" block="Initialize rocket with name %name|with launch delay %countdown|on launchpin %launchpin"
+    //% blockId="rocket_create" block="Initialize rocket|on launchpin %launchpin|with launch delay %countdown|pre-arm state %RocketLaunchState"
     //% weight=90 blockGap=8
     //% parts="rocket"
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(launchpin: DigitalPin,countdown:number, name: String, mode: RocketLaunchState): rocket {
+    export function create(launchpin: DigitalPin,countdown:number, mode: RocketLaunchState): rocket {
         let r = new rocket();
-        r.name=name
         r.countdown = countdown
         r.mode = mode
         return r;
