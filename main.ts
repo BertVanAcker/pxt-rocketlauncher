@@ -1,6 +1,13 @@
 input.onButtonPressed(Button.A, function () {
-    rocket.initiateLaunch()
+    Rocket2.setRocketState(RocketLaunchState.Armed)
 })
+input.onButtonPressed(Button.AB, function () {
+    Rocket2.initiateLaunch()
+})
+input.onButtonPressed(Button.B, function () {
+    Rocket2.setRocketState(RocketLaunchState.Disarmed)
+})
+let Rocket2: rocketlauncher.rocket = null
 let rocket: rocketlauncher.rocket = null
 enum RocketLaunchState {
     //% block="Disarmed"
@@ -48,16 +55,18 @@ namespace rocketlauncher {
          * @param state
          */
         //% rocket.defl=rocket
-        //% blockId="set_rocket_state" block="Set rocket state to %state"
+        //% blockId="set_rocket_state" block="Set %Rocket| state to %state"
         //% weight=80 blockGap=8
         setRocketState(state: RocketLaunchState): void {
-
-            if (state == RocketLaunchState.Armed) {
+            this.mode = state
+            if (this.mode == RocketLaunchState.Armed) {
                 //write pin 0 to HIGH 
+                
                 pins.digitalWritePin(DigitalPin.P0, 1)
             }
-            else if (state == RocketLaunchState.Disarmed) {
+            else if (this.mode == RocketLaunchState.Disarmed) {
                 //write pin 0 to LOW
+            
                 pins.digitalWritePin(DigitalPin.P0, 0)
             }
 
@@ -105,9 +114,11 @@ namespace rocketlauncher {
 
     
 }
-rocket = rocketlauncher.create(DigitalPin.P2, 1500, RocketLaunchState.Disarmed)
+Rocket2 = rocketlauncher.create(DigitalPin.P2, 1500, RocketLaunchState.Disarmed)
 loops.everyInterval(500, function () {
-    if (true) {
-    	
+    if (Rocket2.isArmed()) {
+        basic.showIcon(IconNames.Yes)
+    } else {
+        basic.showIcon(IconNames.No)
     }
 })
