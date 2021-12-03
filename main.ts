@@ -1,4 +1,4 @@
-namespace rocketlauncher{
+namespace rocketlauncher {
     /**
        * State of the rocket launcher
        */
@@ -23,7 +23,7 @@ namespace rocketlauncher{
             //write pin 0 to HIGH 
             pins.digitalWritePin(DigitalPin.P0, 1)
         }
-        else if (rocketState == RocketLaunchState.Disarmed){
+        else if (rocketState == RocketLaunchState.Disarmed) {
             //write pin 0 to LOW
             pins.digitalWritePin(DigitalPin.P0, 1)
         }
