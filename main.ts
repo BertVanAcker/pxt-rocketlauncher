@@ -41,18 +41,18 @@ namespace rocketlauncher {
 
         /**
          * Set the rocket state
-         * @param rocketState
+         * @param state
          */
         //% rocket.defl=rocket
-        //% blockId="set_rocket_state" block="Set rocket state to %rocketState=RocketLaunchState"
+        //% blockId="set_rocket_state" block="Set rocket state to %state"
         //% weight=80 blockGap=8
-        setRocketState(rocketState: RocketLaunchState): void {
+        setRocketState(state: RocketLaunchState): void {
 
-            if (rocketState == RocketLaunchState.Armed) {
+            if (state == RocketLaunchState.Armed) {
                 //write pin 0 to HIGH 
                 pins.digitalWritePin(DigitalPin.P0, 1)
             }
-            else if (rocketState == RocketLaunchState.Disarmed) {
+            else if (state == RocketLaunchState.Disarmed) {
                 //write pin 0 to LOW
                 pins.digitalWritePin(DigitalPin.P0, 0)
             }
@@ -78,7 +78,7 @@ namespace rocketlauncher {
     //% weight=90 blockGap=8
     //% parts="rocket"
     //% trackArgs=0,2
-    //% blockSetVariable=strip
+    //% blockSetVariable=rocket
     export function create(launchpin: DigitalPin,countdown:number, mode: RocketLaunchState): rocket {
         let r = new rocket();
         r.countdown = countdown
