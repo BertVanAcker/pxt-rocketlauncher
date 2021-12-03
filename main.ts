@@ -43,7 +43,8 @@ namespace rocketlauncher {
          * Set the rocket state
          * @param rocketState
          */
-        //% blockId="set_rocket_state" block="Set rocket state to %RocketLaunchState|"
+        //% rocket.defl=rocket
+        //% blockId="set_rocket_state" block="Set rocket state to %rocketState=RocketLaunchState"
         //% weight=80 blockGap=8
         setRocketState(rocketState: RocketLaunchState): void {
 
