@@ -1,3 +1,7 @@
+input.onButtonPressed(Button.A, function () {
+    rocket.initiateLaunch()
+})
+let rocket: rocketlauncher.rocket = null
 enum RocketLaunchState {
     //% block="Disarmed"
     Disarmed,
@@ -59,6 +63,15 @@ namespace rocketlauncher {
 
         }
 
+        /**
+             * Rocket state
+             */
+        //% blockId=rocket_state block="is armed?"
+        isArmed(): boolean{
+            return(this.mode==RocketLaunchState.Armed)
+
+        }
+
 
     }
 
@@ -81,6 +94,7 @@ namespace rocketlauncher {
     //% blockSetVariable=rocket
     export function create(launchpin: DigitalPin,countdown:number, mode: RocketLaunchState): rocket {
         let r = new rocket();
+        r.launchpin = launchpin
         r.countdown = countdown
         r.mode = mode
         return r;
@@ -90,3 +104,9 @@ namespace rocketlauncher {
 
     
 }
+rocket = rocketlauncher.create(DigitalPin.P2, 1500, RocketLaunchState.Disarmed)
+loops.everyInterval(500, function () {
+    if (true) {
+    	
+    }
+})
